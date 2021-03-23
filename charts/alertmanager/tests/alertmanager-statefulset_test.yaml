@@ -7,3 +7,10 @@ tests:
     asserts:
       - isKind:
           of: StatefulSet
+  - it: Should work with disableClustering=true
+    set:
+      disableClustering: true
+    asserts:
+      - matchRegex:
+          path: spec.template.spec.containers
+          pattern: '--cluster.listen-address=$'

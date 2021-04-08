@@ -324,7 +324,7 @@ commands:
           name: Test lts to lts upgrade automation
           command: |
             set -e
-            bin/lts-upgrade-0-23-test
+            while bin/lts-upgrade-0-23-test ; do date "+%FT%T%z Finished upgrade test, doing another." ; done ;
 
   helm-install:
     description: "Install Helm chart from artifact"

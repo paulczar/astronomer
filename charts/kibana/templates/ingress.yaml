@@ -42,5 +42,9 @@ spec:
           - path: /
             backend:
               serviceName: {{ template "kibana.fullname" . }}
+              {{- if .Values.global.sidecar.enabled  }}
+              servicePort: nginx-ui
+              {{- else }}
               servicePort: kibana-ui
+              {{- end}}
 {{- end }}
